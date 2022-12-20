@@ -1,0 +1,104 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.sidebar{
+    //display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    background-color: v.$indigo;
+    transition-property: opacity;
+    transition-duration: .4s;
+    
+    &.mostrar{
+        //display: block;
+        opacity: 1;
+        height: 100%;
+        padding: 2rem;
+        position: absolute;//no tiene padre asi que toma todo
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(0 0 0 / .95);
+        @include m.tablet {
+            display: none;
+        }
+    }
+
+    &.ocultar{
+        opacity: 0;
+    }
+    @include m.tablet {
+        display: block;
+        opacity: 1;
+        height: 100%;
+        background-color: v.$indigo;
+        padding: 2rem;
+    }
+
+    .contenedor-sidebar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2{
+            color: v.$blanco;
+            margin: 0;
+            text-align: center;
+        }
+
+        .cerrar-menu{
+            display: flex;
+            justify-content: center;
+            height: 2rem;
+            width: 2rem;
+            img{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            @include m.tablet {
+                display: none;
+            }
+        }
+    }
+    
+    .sidebar-nav{
+        margin: 5rem;
+
+        a{
+            color: v.$blanco;
+            display: block;
+            padding: 1rem 2rem;
+            transition-duration: .4s;
+            font-weight: 900;
+            border-radius: 2rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+
+
+            &:hover,
+            &.activo{
+                background-color: darken($color: v.$indigo, $amount: 20);
+            }
+
+            @include m.tablet {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                text-align: left;
+            }
+        }
+    }
+    .cerrar-sesion-mobile{
+        margin-top: 10rem;
+        .cerrar-sesion{
+            @include m.boton(v.$indigo, v.$blanco);
+        }
+
+        @include m.tablet {
+            display: none;
+        }
+    };
+}

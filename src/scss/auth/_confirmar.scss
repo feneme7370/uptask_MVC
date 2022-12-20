@@ -1,0 +1,20 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.confirmar{
+    margin-top: v.$separacion;
+
+    .uptask{
+        @include m.textoDegradado(v.$indigo);
+    }
+
+    input[type="submit"]{
+        @include m.boton(v.$indigo, v.$blanco);
+    }
+
+    .acciones{
+        a{
+            color: v.$indigo;
+        }
+    }
+}
